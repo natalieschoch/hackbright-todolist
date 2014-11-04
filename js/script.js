@@ -1,4 +1,16 @@
 $(document).ready(function() {
+
+	$.ajax({
+		url: 'test.json',
+		type: "GET",
+		dataType: "json",
+		success: function(response) {
+			for(var i=0; i<response.tasks.length; i++) {
+				addItemToList(response.tasks[i]);
+			}
+		}
+	});
+
 	var addItemToList = function(item) {
 		var $item = $('<span><input type="checkbox"x class="item"/><label>'+item+'</label><br/></span>');	
 		$('#todo-list').append($item);
